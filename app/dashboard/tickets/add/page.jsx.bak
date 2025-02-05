@@ -1,0 +1,189 @@
+import { addTicket } from "@/app/lib/actions";
+import styles from "@/app/ui/dashboard/tickets/addTicket/addTicket.module.css";
+import { auth } from "@/app/auth";
+
+// This is a server component that wraps our client component
+const AddTicketPage = async () => {
+  const session = await auth();
+  return <AddTicketForm session={session} />;
+};
+
+export default AddTicketPage;
+
+// This is our client component
+"use client";
+
+import { useState, useEffect } from "react";
+import { CldUploadWidget } from "next-cloudinary";
+import { useRouter } from "next/navigation";
+
+const AddTicketForm = ({ session }) => {
+  const [attachments, setAttachments] = useState([]);
+  const [message, setMessage] = useState("");
+  const router = useRouter();
+  const isLRGVDC = session.user.department === "LRGVDC";
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    formData.append('attachments', JSON.stringify(attachments));
+    
+    try {
+      await addTicket(formData);
+      router.push('/dashboard/tickets');
+      router.refresh();
+    } catch (error) {
+      setMessage("Failed to create ticket. Please try again.");
+      console.error("Error creating ticket:", error);
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input
+          type="text"
+          placeholder="name"
+          name="user"
+          value={session.user.id}
+          required
+          hidden
+        />
+        <label htmlFor="user">Person Name</label>
+        <input type="text" placeholder="name" name="name" required />
+        <label htmlFor="email">Email</label>
+        <input type="email" placeholder="email" name="email" required />
+        <label htmlFor="phone">Phone</label>
+        <input type="tel" placeholder="phone" name="phone" required />
+        <label htmlFor="department">Department</label>
+        <select name="department" id="department">
+          <option value="" disabled>
+            Select Department
+          </option>
+          <option value="Admin">Admin</option>
+          <option value="Finance">Finance</option>
+          <option value="HR">HR</option>
+          <option value="AAA">AAA</option>
+          <option value="VM">VM</option>
+          <option value="HLS">HLS</option>
+          <option value="RPA">RPA</option>
+          <option value="CED">CED</option>
+          <option value="MPO">MPO</option>
+        </select>
+        {!isLRGVDC && (
+          <>
+            <label htmlFor="issue">Select Issue</label>
+            <select name="issue" id="issue">
+              <option value="general">Select an issue</option>
+              <option value="Hardware">Hardware</option>
+              <option value="Software">Software</option>
+              <option value="Networking">Networking</option>
+              <option value="Account Access">Account Access</option>
+              <option value="System Crash">System Crash</option>
+              <option value="Performance Issues">Performance Issues</option>
+              <option value="Data Loss">Data Loss</option>
+              <option value="Security Breach">Security Breach</option>
+              <option value="Bug/Error">Bug/Error</option>
+              <option value="Configuration">Configuration</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Request">Request</option>
+              <option value="Upgrade">Upgrade</option>
+              <option value="Training">Training</option>
+              <option value="Other">Other</option>
+            </select>
+          </>
+        )}
+        <label htmlFor="comment">Describe issue below...</label>
+        <textarea
+          required
+          name="comment"
+          id="comment"
+          rows="6"
+          placeholder="Please describe the issue..."
+        ></textarea>
+
+        {/* File Attachments Section */}
+        <div className={styles.attachmentsSection}>
+          <label>Attachments</label>
+          <CldUploadWidget
+            signatureEndpoint={`${process.env.NEXT_PUBLIC_BASE_URL}/api/sign-cloudinary-params`}
+            onSuccess={(result) => {
+              if (result?.info) {
+                const newAttachment = {
+                  url: result.info.secure_url,
+                  filename: result.info.original_filename,
+                  filetype: result.info.format
+                };
+                setAttachments(prev => [...prev, newAttachment]);
+                setMessage("File uploaded successfully!");
+              }
+            }}
+            options={{
+              cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+              uploadPreset: "wcklxoem",
+              maxFiles: 5
+            }}
+          >
+            {({ open }) => (
+              <button
+                type="button"
+                className={styles.uploadButton}
+                onClick={() => open()}
+              >
+                Upload Files
+              </button>
+            )}
+          </CldUploadWidget>
+
+          {/* Display uploaded files */}
+          {attachments.length > 0 && (
+            <div className={styles.attachmentsList}>
+              <h4>Uploaded Files:</h4>
+              <ul>
+                {attachments.map((file, index) => (
+                  <li key={index}>
+                    {file.filename}
+                    <button
+                      type="button"
+                      className={styles.removeButton}
+                      onClick={() => {
+                        setAttachments(prev => prev.filter((_, i) => i !== index));
+                      }}
+                    >
+                      Remove
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <label htmlFor="status">Status</label>
+        <select name="status" id="status">
+          <option value="Open">Open</option>
+          {!isLRGVDC && <option value="In Progress">In Progress</option>}
+          {!isLRGVDC && <option value="On Hold">On Hold</option>}
+          <option value="Closed">Closed</option>
+        </select>
+
+        <input
+          name="assignedTo"
+          id="assignedTo"
+          hidden
+          defaultValue={session.user.id}
+        />
+
+        <input
+          name="assignedDepartment"
+          id="assignedDepartment"
+          hidden
+          defaultValue={session.user.department}
+        />
+
+        {message && <p className={styles.message}>{message}</p>}
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};

@@ -1,0 +1,281 @@
+.container {
+  background: var(--bgSoft);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.updateForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  margin: 0 auto;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-weight: 500;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.input,
+.textarea {
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.2s;
+  background-color: #f9fafb;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background-color: white;
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submitButton {
+  background-color: #7bb389;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  width: 250px;
+}
+
+.submitButton:hover {
+  background-color: #5c7a63;
+  transform: none;
+}
+
+.submitButton:disabled {
+  background-color: #a3c5ae;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.imageUploadSection {
+  background-color: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 2px dashed #e5e7eb;
+}
+
+.uploadButton {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.uploadButton:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.uploadIcon {
+  font-size: 1.25rem;
+}
+
+.imagePreview {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.imageItem {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.imageItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.imageItem:hover img {
+  transform: scale(1.05);
+}
+
+.deleteImageButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(239, 68, 68, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0;
+}
+
+.imageItem:hover .deleteImageButton {
+  opacity: 1;
+}
+
+.deleteImageButton:hover {
+  background-color: #dc2626;
+  transform: scale(1.1);
+}
+
+.quillWrapper {
+  margin-top: 0.5rem;
+}
+
+/* React Quill Editor Container */
+.quillWrapper :global(.quill) {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* React Quill Editor */
+.quillWrapper :global(.ql-container) {
+  min-height: 120px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: white;
+  border: 1px solid var(--bgSoft);
+}
+
+/* React Quill Toolbar */
+.quillWrapper :global(.ql-toolbar) {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #f8f9fa;
+  border: 1px solid var(--bgSoft);
+  border-bottom: none;
+}
+
+.quillWrapper :global(.ql-editor) {
+  min-height: 200px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text) !important;
+  background-color: rgb(241, 241, 241);
+}
+
+.quillWrapper :global(.ql-editor.ql-blank::before) {
+  color: #9ca3af;
+  font-style: normal;
+  opacity: 0.8;
+}
+
+/* Make sure the text stays visible */
+.quillWrapper :global(.ql-editor p),
+.quillWrapper :global(.ql-editor h1),
+.quillWrapper :global(.ql-editor h2),
+.quillWrapper :global(.ql-editor h3),
+.quillWrapper :global(.ql-editor h4),
+.quillWrapper :global(.ql-editor h5),
+.quillWrapper :global(.ql-editor h6),
+.quillWrapper :global(.ql-editor ul),
+.quillWrapper :global(.ql-editor ol),
+.quillWrapper :global(.ql-editor li) {
+  color:black !important;
+}
+
+/* Toolbar button hover states */
+.quillWrapper :global(.ql-snow.ql-toolbar button:hover),
+.quillWrapper :global(.ql-snow .ql-toolbar button:hover),
+.quillWrapper :global(.ql-snow.ql-toolbar button.ql-active),
+.quillWrapper :global(.ql-snow .ql-toolbar button.ql-active),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-label:hover),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-label:hover),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-label.ql-active),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-label.ql-active),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-item:hover),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-item:hover),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-item.ql-selected),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-item.ql-selected) {
+  color: #7bb389;
+}
+
+/* Toolbar button stroke color */
+.quillWrapper :global(.ql-snow.ql-toolbar button:hover .ql-stroke),
+.quillWrapper :global(.ql-snow .ql-toolbar button:hover .ql-stroke),
+.quillWrapper :global(.ql-snow.ql-toolbar button.ql-active .ql-stroke),
+.quillWrapper :global(.ql-snow .ql-toolbar button.ql-active .ql-stroke),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke) {
+  stroke: #7bb389;
+}
+
+/* Toolbar button fill color */
+.quillWrapper :global(.ql-snow.ql-toolbar button:hover .ql-fill),
+.quillWrapper :global(.ql-snow .ql-toolbar button:hover .ql-fill),
+.quillWrapper :global(.ql-snow.ql-toolbar button.ql-active .ql-fill),
+.quillWrapper :global(.ql-snow .ql-toolbar button.ql-active .ql-fill),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill),
+.quillWrapper :global(.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill),
+.quillWrapper :global(.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill) {
+  fill: #7bb389;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .imagePreview {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}

@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  gap: 50px;
+  margin-top: 20px;
+}
+
+.infoContainer {
+  flex: 1;
+  background-color: var(--bgSoft);
+  padding: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: var(--textSoft);
+  height: max-content;
+  width: 800px;
+}
+
+.formContainer {
+  flex: 3;
+  background-color: var(--bgSoft);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form {
+  display: flex;
+
+  flex-direction: column;
+}
+
+.form input,
+.form textarea,
+.form select {
+  padding: 20px;
+  border: 2px solid #2e374a;
+  border-radius: 5px;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 10px 0px;
+  width: 800px;
+}
+
+.form label {
+  font-size: 12px;
+}
+
+.form button {
+  width: 15%;
+  padding: 20px;
+  background-color: #28793d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.commentInfo {
+  padding: 1rem;
+  margin: 1rem 1rem 0 0;
+  width: 800px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 20px;
+  text-wrap: wrap;
+}
+
+.commentInfo h6 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.commentInfo p {
+  font-size: 14px;
+}
+
+.error {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25em;
+}
+
+.field {
+  margin-bottom: 1em;
+}

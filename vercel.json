@@ -1,0 +1,7 @@
+{
+    "functions": {
+        "app/api/get-cloudinary-files/route.js": {
+            "maxDuration": 60
+        }
+    }
+}

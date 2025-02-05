@@ -1,0 +1,60 @@
+.timeDisplay {
+  background: var(--bgSoft);
+  padding: 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.timeValue {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text);
+  font-family: monospace;
+}
+
+.timeLabel {
+  font-size: 0.9rem;
+  color: var(--textSoft);
+  margin-top: 0.5rem;
+}
+
+.runningIndicator {
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  font-size: 0.9rem;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+}

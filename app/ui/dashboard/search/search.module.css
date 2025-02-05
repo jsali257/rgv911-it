@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--bgSoft);
+  padding: 10px;
+  border-radius: 10px;
+  width: 400px;
+
+  color: var(--text);
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  color: var(--text);
+  outline: none;
+}
+
+/* Mobile Responsiveness for Filters */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+}

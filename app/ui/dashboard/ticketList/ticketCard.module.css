@@ -1,0 +1,137 @@
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+
+.card {
+  background: var(--bgSoft);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+}
+
+.statusOpen {
+  background-color: #08bb58;
+}
+
+.statusInProgress {
+  background-color: #3068b2;
+}
+
+.statusOnHold {
+  background-color: #f3aa4b;
+}
+
+.statusClosed {
+  background-color: #fc4d4d;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--textSoft);
+  font-size: 0.875rem;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--textSoft);
+}
+
+.infoRow:last-child {
+  margin-bottom: 0;
+}
+
+.infoRow .icon {
+  min-width: 16px;
+  color: var(--textSoft);
+}
+
+.infoRow:has(.icon[class*="UserCircle"]) {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--bgSoft);
+  font-weight: 500;
+}
+
+.icon {
+  color: var(--textSoft);
+  font-size: 1rem;
+}
+
+.cardActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bgSoft);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cardContainer {
+  cursor: move;
+  transition: opacity 0.2s ease;
+}
+
+.cardContainer.isDragging {
+  opacity: 0.5;
+}
+
+/* Grid Layout for Cards */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .card {
+    padding: 0.75rem;
+  }
+
+  .infoRow {
+    font-size: 0.875rem;
+  }
+}

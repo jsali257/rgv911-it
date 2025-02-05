@@ -1,0 +1,97 @@
+/* Container for the select box */
+.multiSelectContainer {
+  width: 100%;
+  margin: 0 auto;
+  font-family: "Arial", sans-serif;
+  background-color: #fff;
+  border-radius: 8px;
+
+  color: black;
+}
+
+/* Label styling */
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Select control styling */
+.reactSelectControl {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px;
+  min-height: 40px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+/* Hover effect for select control */
+.reactSelectControl:hover {
+  border-color: #007bff;
+}
+
+/* Dropdown menu styling */
+.reactSelectMenu {
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Option styling */
+.reactSelectOption {
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Hover effect for options */
+.reactSelectOption:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Styling for selected items */
+.reactSelectMultiValue {
+  background-color: #007bff;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin: 2px;
+}
+
+/* Label for multi-value items */
+.reactSelectMultiValueLabel {
+  color: white;
+  font-weight: 600;
+}
+
+/* Remove button styling for selected items */
+.reactSelectMultiValueRemove {
+  background-color: #0069d9;
+  border-radius: 50%;
+  color: white;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* Hover effect for remove button */
+.reactSelectMultiValueRemove:hover {
+  background-color: #0056b3;
+}
+
+/* Display selected users below the select */
+.selectedUsers {
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Style for selected users label */
+.selectedUsers strong {
+  color: #007bff;
+}

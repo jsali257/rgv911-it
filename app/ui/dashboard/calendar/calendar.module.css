@@ -1,0 +1,135 @@
+.calendarTimeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 10px 20px;
+}
+
+.navigationButton {
+  background-color: #c7979700;
+  /* Green color */
+  color: var(--text);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navigationButton:hover {
+  color: #327cca;
+  /* Darker green */
+  transform: scale(1.05);
+}
+
+.navigationButton:active {
+  color: #327cca;
+  /* Even darker green */
+}
+
+.calendarHeader h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--text);
+}
+
+.timeline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.timelineDay {
+  width: 12%;
+  padding: 5px;
+  text-align: center;
+  position: relative;
+  margin: 5px;
+}
+
+.timelineDayHeader {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.timelineDayHeader .dayNumber {
+  display: block;
+  font-size: 18px;
+}
+
+.timelineDayHeader .dayName {
+  font-size: 12px;
+}
+
+.timelineEvents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timelineEvent {
+  position: relative;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  margin: 1rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  padding: 15px;
+  font-size: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timelineEvent .eventTitle {
+  color: white;
+}
+
+.eventTitle {
+  color: #fff;
+}
+
+/* Define a set of colors for the projects */
+.projectColor1 {
+  background-color: #ff7f7f;
+  /* Red */
+}
+
+.projectColor2 {
+  background-color: #7fafff;
+  /* Blue */
+}
+
+.projectColor3 {
+  background-color: #7fff7f;
+  /* Green */
+}
+
+.projectColor4 {
+  background-color: #ffbf7f;
+  /* Orange */
+}
+
+.projectColor5 {
+  background-color: #b97fff;
+  /* Purple */
+}
+
+.projectColor6 {
+  background-color: #ffff7f;
+  /* Yellow */
+}

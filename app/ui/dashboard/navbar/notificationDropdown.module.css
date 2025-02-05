@@ -1,0 +1,135 @@
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 350px;
+  max-height: 500px;
+  overflow-y: auto;
+  background-color: var(--bg);
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--bgSoft);
+}
+
+.title {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.clearAll {
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--textSoft);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.clearAll:hover {
+  background-color: var(--bgSoft);
+  color: var(--text);
+}
+
+.notification {
+  padding: 1rem;
+  border-bottom: 1px solid var(--bgSoft);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.notification:hover {
+  background-color: var(--bgSoft);
+}
+
+.unread {
+  background-color: var(--bgSoft);
+}
+
+.unread:hover {
+  background-color: var(--bg);
+}
+
+.content {
+  flex: 1;
+}
+
+.notificationTitle {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.message {
+  font-size: 0.9rem;
+  color: var(--textSoft);
+  margin-bottom: 0.5rem;
+}
+
+.time {
+  font-size: 0.8rem;
+  color: var(--textSoft);
+}
+
+.deleteButton {
+  background: none;
+  border: none;
+  color: var(--textSoft);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  opacity: 0;
+}
+
+.notification:hover .deleteButton {
+  opacity: 1;
+}
+
+.deleteButton:hover {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+}
+
+.deleteButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--textSoft);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #0066cc;
+  border-radius: 50%;
+  margin-top: 0.5rem;
+}
+
+.notificationLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}

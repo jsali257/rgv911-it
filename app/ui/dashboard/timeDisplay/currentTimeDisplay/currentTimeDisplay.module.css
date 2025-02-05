@@ -1,0 +1,33 @@
+.currentTimeDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--bgSoft);
+  margin-bottom: 15px;
+}
+
+.currentTimeDisplay h3 {
+  margin: 0;
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: var(--textSoft);
+}
+
+.currentTimeDisplay p {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.icon {
+    margin-right: 8px;
+    /* Spacing between the icon and the text */
+    font-size: 20px;
+    /* Adjust the size of the icon */
+    color: #555;
+    /* Icon color */
+}

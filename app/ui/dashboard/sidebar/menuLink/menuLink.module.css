@@ -1,0 +1,38 @@
+.container {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0px;
+  border-radius: 8px;
+  color: var(--text);
+  transition: all 0.2s ease;
+  font-weight: 500;
+
+}
+
+.container:hover {
+  background-color: #3068b2;
+  color: white;
+  transform: translateX(4px);
+}
+
+.active {
+  background-color: #3068b2;
+  color: white;
+  box-shadow: 0 2px 4px var(--cardShadow);
+}
+
+.imageContainer {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileImage {
+  border-radius: 50%;
+  object-fit: cover;
+}

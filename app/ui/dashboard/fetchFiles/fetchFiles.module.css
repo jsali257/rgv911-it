@@ -1,0 +1,86 @@
+/* styles/fetchFile.module.css */
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+  font-family: "Roboto", sans-serif;
+}
+
+.heading {
+  font-size: 36px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.fileList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,
+      minmax(250px, 1fr));
+  /* Responsive grid */
+  gap: 20px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.fileItem {
+  background-color: rgb(235, 235, 235);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.fileItem:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.fileImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  /* Makes the image fill the container and maintain aspect ratio */
+  border-radius: 8px;
+  margin-bottom: 15px;
+  color: black;
+}
+
+.fileDetails {
+  text-align: center;
+}
+
+.fileDetails p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+.fileDetails a {
+  font-size: 1rem;
+  color: #2980b9;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.fileDetails a:hover {
+  text-decoration: underline;
+}
+
+.errorMessage {
+  color: #e74c3c;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.loadingMessage {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #95a5a6;
+}

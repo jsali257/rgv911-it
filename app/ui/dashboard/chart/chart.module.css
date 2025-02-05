@@ -1,0 +1,161 @@
+/* chart.module.css */
+.container {
+  background-color: var(--bgSoft);
+  padding: 20px;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.chartGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  height: 100%;
+}
+
+.barChartContainer {
+  background-color: var(--bgSoft);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.pieChartContainer {
+  background-color: var(--bgSoft);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chartContainer {
+  margin-top: 20px;
+  height: 350px;
+  background-color: var(--bg);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+
+.customTooltip {
+  background-color: var(--bgSoft);
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tooltipLabel {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.tooltipValue {
+  color: var(--textSoft);
+  margin-bottom: 4px;
+}
+
+.tooltipPercentage {
+  color: var(--textSoft);
+  font-size: 0.9em;
+}
+
+.tooltipTotal {
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid var(--border);
+  font-weight: 500;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.statItem {
+  background-color: var(--bg);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease;
+}
+
+.statItem:hover {
+  transform: translateY(-2px);
+}
+
+.statHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--textSoft);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.statValue {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.statPercent {
+  font-size: 0.6em;
+  color: var(--textSoft);
+  margin-left: 8px;
+}
+
+.noData {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--textSoft);
+  font-size: 16px;
+  background-color: var(--bg);
+  border-radius: 8px;
+  border: 1px dashed var(--textSoft);
+}
+
+@media screen and (max-width: 768px) {
+  .chartGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pieChartContainer {
+    height: 250px;
+  }
+  
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chartContainer {
+    height: 300px;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .chartContainer {
+    height: 250px;
+  }
+}

@@ -1,0 +1,357 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
+
+:root {
+  --bg: #e8e8e8;
+  --bgSoft: white;
+  --text: black;
+  --textSoft: #1818185f;
+  --textLight: #e7e7e7dd;
+  --bgReplies: rgb(238, 238, 238);
+  --border: #ddd;
+}
+
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --bgSoft: #1e293b;
+  --text: #ffffff;
+  --textSoft: #ffffff5f;
+  --textLight: #e7e7e7dd;
+  --bgReplies: rgb(38, 38, 38);
+  --border: #b6b6b6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --fc-page-bg-color: transparent !important;
+  --fc-border-color: var(--bgSoft) !important;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* FullCalendar Container */
+.fc {
+  font-family: "Roboto", sans-serif;
+  border-radius: 10px;
+
+  overflow: hidden;
+  background: var(--bgSoft);
+}
+
+/* Header Customization */
+.fc .fc-toolbar {
+  background: #c7979700; /* Light Green */
+  color: var(--text);
+  border-radius: 10px 10px 0 0;
+  padding: 15px;
+}
+
+.fc .fc-toolbar h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--text);
+}
+
+.fc .fc-button-primary:disabled {
+  background: rgb(135, 166, 223);
+  color: white;
+}
+
+.fc .fc-toolbar button {
+  background: rgb(135, 166, 223);
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.fc .fc-toolbar button:hover {
+  background: #327cca; /* Darker green */
+  color: white;
+}
+
+/* Grid Styling */
+.fc-daygrid-day {
+  background: var(--bgSoft);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.fc-daygrid-day-number {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text);
+}
+
+/* Calendar Day Number Styling */
+.fc .fc-daygrid-day-number {
+  text-align: center;
+  width: 100%;
+  padding: 8px;
+}
+
+.fc .fc-daygrid-day-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fc .fc-col-header-cell {
+  text-align: center;
+  padding: 8px;
+  background-color: var(--bgSoft);
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: var(--bgSoft) !important;
+}
+
+.fc .fc-daygrid-day-frame {
+  min-height: 100px;
+}
+
+/* Event Styling */
+.fc-event {
+  background-color: #e2e2e200; /* Blue */
+  color: var(--text);
+  border-radius: 5px;
+
+  text-align: center;
+  transition: background-color 0.3s ease;
+  line-height: 1.2; /* Adjust line-height for better spacing */
+}
+
+.fc-event:hover {
+  background-color: #ffffff00 !important; /* Darker blue */
+}
+.fc .fc-list-event:hover td {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+/* Event Content */
+.fc-event-title {
+  font-size: 12px; /* Slightly smaller font size for event titles */
+  font-weight: bold;
+}
+
+.fc-event-time {
+  font-size: 10px; /* Smaller font size for event time */
+  color: #ffffff;
+}
+
+.fc-event .fc-event-time {
+  margin-top: 2px; /* Reduce space between title and time */
+}
+
+.fc-event .fc-event-time {
+  margin-top: 5px;
+}
+
+/* Week and Day Grid */
+.fc-daygrid-week-number {
+  font-weight: bold;
+  font-size: 14px;
+  background-color: #f9f9f9;
+}
+
+.fc-daygrid-week-number:hover {
+  background-color: #e1e1e1;
+}
+
+/* Today’s Highlight */
+.fc-daygrid-day.fc-day-today {
+  background-color: rgba(255, 0, 0, 0) !important;
+}
+
+.fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+  color: rgb(255, 255, 255);
+}
+
+/* Event Tooltip */
+.fc-event-tooltip {
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/* Week/Day Views: Make grid lines lighter */
+.fc-timegrid-slot {
+  border-bottom: 1px solid var(--border);
+  height: 40px; /* Reduce slot height for a more compact view */
+}
+
+/* Adjust day cells */
+.fc-daygrid-day {
+  padding: 5px; /* Reduce padding for day cells */
+}
+
+/* Calendar Styles */
+.fc-timegrid-event {
+  min-height: 30px !important;
+}
+
+.fc-timegrid-event .fc-event-main {
+  padding: 2px 4px !important;
+}
+
+.fc-daygrid-event {
+  white-space: normal !important;
+  align-items: normal !important;
+}
+
+.fc-list-event {
+  cursor: pointer;
+}
+
+.fc-event-time {
+  font-size: 0.9em;
+}
+
+/* Custom Today Button */
+.fc-today-button {
+  background-color: #327cca; /* Darker green */
+  color: white;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-size: 16px;
+}
+
+.fc-today-button:hover {
+  background-color: #4caf50;
+}
+.projects_content__6_eyW {
+  background-color: var(--bgSoft) !important;
+}
+
+/* Event Details Container */
+.fc-event-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border: none;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border: none;
+}
+
+.fc-theme-standard .fc-list-day-cushion {
+  background-color: var(--bgSoft);
+}
+
+.fc-theme-standard .fc-list {
+  border: none;
+}
+
+.fc .fc-list-event:hover td {
+  background-color: rgb(233, 233, 233);
+  color: var(--text);
+}
+
+.fc-theme-standard td {
+  border: none !important;
+}
+
+/* Mobile Responsive Calendar Styles */
+@media screen and (max-width: 768px) {
+  .fc {
+    font-size: 14px;
+  }
+
+  .fc .fc-toolbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .fc .fc-toolbar-title {
+    font-size: 1.2em;
+  }
+
+  .fc .fc-button {
+    padding: 6px 8px;
+    font-size: 0.9em;
+  }
+
+  .fc .fc-toolbar-chunk {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .fc .fc-view-harness {
+    height: auto !important;
+    min-height: 400px;
+  }
+
+  .fc .fc-daygrid-event {
+    white-space: normal;
+    overflow: hidden;
+    display: block;
+  }
+
+  /* Adjust event content for mobile */
+  .fc-daygrid-event .fc-event-main {
+    padding: 2px 4px;
+  }
+
+  .fc-daygrid-event .fc-event-title {
+    font-size: 0.9em;
+  }
+
+  /* Hide team members on mobile view */
+  .fc-daygrid-event .teamMembersContainer {
+    display: none;
+  }
+
+  /* List view specific styles */
+  .fc-list-event {
+    padding: 8px;
+  }
+
+  .fc-list-event-title {
+    font-size: 0.9em;
+  }
+
+  .fc-list-day-cushion {
+    padding: 8px;
+  }
+}
+
+/* Tablet Responsive Styles */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .fc {
+    font-size: 15px;
+  }
+
+  .fc .fc-toolbar-title {
+    font-size: 1.4em;
+  }
+
+  .fc .fc-daygrid-day-frame {
+    min-height: 80px;
+  }
+}

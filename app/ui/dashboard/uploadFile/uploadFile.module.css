@@ -1,0 +1,79 @@
+/* Main container */
+.container {
+  padding: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--bgSoft);
+  border-radius: 10px;
+}
+
+/* Upload button styling */
+.uploadButton {
+  padding: 12px 24px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin: 2rem;
+}
+
+.uploadButton:hover {
+  background-color: #0056b3;
+}
+
+/* Success/Error message styling */
+.message {
+  color: #28a745; /* Green for success */
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.message.error {
+  color: #dc3545; /* Red for errors */
+}
+
+/* File details container styling */
+.fileDetails {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.fileDetails p {
+  margin: 5px 0;
+}
+
+.fileDetails strong {
+  color: var(--text);
+}
+
+/* Image container styling */
+.imageContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+
+.imageContainer img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* PDF container */
+.pdfContainer {
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.pdfContainer object {
+  border: none;
+}

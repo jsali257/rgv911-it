@@ -1,0 +1,251 @@
+.attachmentsContainer {
+  margin-top: 30px;
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.attachmentsContainer h3 {
+  color: var(--textSoft);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.attachmentsContainer h3::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 20px;
+  background: #4a90e2;
+  border-radius: 2px;
+}
+
+.attachmentsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+.attachmentItem {
+  background: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  position: relative;
+  border: 1px solid #e9ecef;
+}
+
+.attachmentItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #4a90e2;
+}
+
+.attachmentItem a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.attachmentContent {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  max-width: 100%;
+}
+
+.fileIcon {
+  font-size: 24px;
+  color: #4a90e2;
+  flex-shrink: 0;
+}
+
+.fileDetails {
+  flex: 1;
+  min-width: 0;
+  margin-right: 40px;
+}
+
+.fileName {
+  font-weight: 500;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #495057;
+  max-width: 100%;
+  padding-right: 8px;
+}
+
+.fileType {
+  font-size: 0.8rem;
+  color: #868e96;
+  text-transform: uppercase;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: 1;
+}
+
+.deleteButton:hover {
+  color: #fa5252;
+  background: #fff5f5;
+}
+
+.noAttachments {
+  text-align: center;
+  padding: 30px;
+  color: #868e96;
+  font-style: italic;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 1px dashed #ced4da;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.modalHeader {
+  padding: 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  color: #495057;
+  font-size: 1.25rem;
+}
+
+.modalBody {
+  padding: 20px;
+}
+
+.modalBody p {
+  margin: 0;
+  color: #495057;
+}
+
+.modalWarning {
+  margin-top: 10px !important;
+  color: #ff6b6b !important;
+  font-size: 0.9rem;
+}
+
+.modalFooter {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #e9ecef;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #868e96;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.closeButton:hover {
+  color: #495057;
+}
+
+.cancelButton {
+  padding: 8px 16px;
+  background: #e9ecef;
+  border: none;
+  border-radius: 6px;
+  color: #495057;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  background: #dee2e6;
+}
+
+.confirmButton {
+  padding: 8px 16px;
+  background: #ff6b6b;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.confirmButton:hover {
+  background: #fa5252;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

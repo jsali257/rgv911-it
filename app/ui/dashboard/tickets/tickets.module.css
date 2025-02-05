@@ -1,0 +1,156 @@
+.pageContainer {
+  padding: 20px;
+  background-color: var(--bg);
+  min-height: 100%;
+  border-radius: 10px;
+}
+
+.pageHeader {
+  margin-bottom: 30px;
+}
+
+.pageHeader h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 10px 0;
+}
+
+.subtitle {
+  color: var(--textSoft);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.contentContainer {
+
+  border-radius: 10px;
+
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 15px;
+  }
+
+  .pageHeader h1 {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+.container {
+  background-color: var(--bgSoft);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.addButton {
+  padding: 10px;
+  background-color: #0051ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background-color: #5f86da;
+}
+
+.table {
+  width: 100%;
+}
+
+.table td {
+  padding: 10px;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.productImage {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.view {
+  background-color: #0051ff;
+}
+
+.view:hover {
+  background-color: #5f86da;
+}
+
+.delete {
+  background-color: crimson;
+}
+
+.delete:hover {
+  background-color: rgba(255, 1, 1, 0.389);
+}
+
+.statusOpen {
+  color: rgb(62, 208, 62);
+  font-weight: bold;
+}
+
+.statusClosed {
+  color: red;
+  font-weight: bold;
+}
+
+.statusOnHold {
+  color: orange;
+  font-weight: bold;
+}
+
+.statusSolved {
+  color: rgb(106, 106, 218);
+  font-weight: bold;
+}
+
+.statusInProgress {
+  color: rgb(132, 149, 255);
+  font-weight: bold;
+}
+
+.defaultStatus {
+  color: red;
+}
+
+.search {
+  background-color: red;
+}
+
+.escalate {
+  background-color: rgb(214, 118, 59);
+}

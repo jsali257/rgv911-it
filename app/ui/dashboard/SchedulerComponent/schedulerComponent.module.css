@@ -1,0 +1,28 @@
+/* schedulerComponent.module.css */
+.container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--bgSoft);
+  margin-top: 20px;
+}
+
+.teamMembersContainer {
+  margin-top: 5px;
+  font-size: 0.85em;
+}
+
+.teamMembersList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.teamMemberItem {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 12px;
+  margin-right: 4px;
+  margin-top: 4px;
+  font-size: 0.85em;
+}
