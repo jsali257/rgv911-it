@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./ticketTabs.module.css";
 import UpdateTicketForm from "../updateTicketForm";
 import AddReply from "../../comments/comments";
@@ -10,10 +11,19 @@ import { FaTicketAlt, FaComments, FaPaperclip, FaRegCommentDots } from "react-ic
 
 const TicketTabs = ({ ticket, users, isLRGVDC, session, replies = [] }) => {
   const [activeTab, setActiveTab] = useState("details");
+  const router = useRouter();
 
   const handleTabClick = (tabId) => {
     setActiveTab(tabId);
   };
+
+  const handleTicketUpdate = useCallback(() => {
+    // Debounce the refresh
+    const timeoutId = setTimeout(() => {
+      router.refresh();
+    }, 500);
+    return () => clearTimeout(timeoutId);
+  }, [router]);
 
   const formatDate = (date) => {
     const options = { 
@@ -36,6 +46,7 @@ const TicketTabs = ({ ticket, users, isLRGVDC, session, replies = [] }) => {
               users={users}
               isLRGVDC={isLRGVDC}
               session={session}
+              onUpdate={handleTicketUpdate}
             />
           </div>
         );
@@ -83,7 +94,6 @@ const TicketTabs = ({ ticket, users, isLRGVDC, session, replies = [] }) => {
                             
                             <div className={styles.replyMain}>
                               <div className={styles.replyMeta}>
-                       
                                 <span className={styles.replyDate}>
                                   Posted on {formatDate(reply.createdAt)}
                                 </span>

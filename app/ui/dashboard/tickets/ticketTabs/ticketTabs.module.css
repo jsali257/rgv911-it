@@ -43,8 +43,8 @@
 }
 
 .tab.active {
-  color: var(--text);
-  background: var(--bg);
+  color: white;
+  background: #586ddd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -62,8 +62,8 @@
 }
 
 .tab.active .count {
-  background: #4a90e2;
-  color: white;
+  background: white;
+  color: black;
 }
 
 .tabPanel {
@@ -213,7 +213,7 @@
 }
 
 .reply {
-  background: var(--bg);
+  background: var(--bg14496);
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }

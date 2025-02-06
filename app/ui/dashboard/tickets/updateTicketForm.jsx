@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { updateTicket } from "@/app/lib/actions";
 import formStyles from "@/app/ui/dashboard/tickets/singleTicket/singleTicket.module.css";
 import styles from "./updateTicketForm.module.css";
 import Toast from "@/app/ui/dashboard/toast/toast";
+import { FaSave } from "react-icons/fa";
 
 // Phone number formatting utility
 const formatPhoneNumber = (value) => {
@@ -34,8 +34,7 @@ const parsePhoneAndExtension = (phoneString) => {
   return { phone, extension };
 };
 
-const UpdateTicketForm = ({ ticket, users, isLRGVDC, session }) => {
-  const router = useRouter();
+const UpdateTicketForm = ({ ticket, users, isLRGVDC, session, onUpdate }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
@@ -142,8 +141,10 @@ const UpdateTicketForm = ({ ticket, users, isLRGVDC, session }) => {
       } else {
         setToastMessage("Ticket updated successfully!");
         setToastType("success");
-        // Wait briefly before refreshing to ensure toast is visible
-        setTimeout(() => router.refresh(), 1000);
+        // Notify parent after a successful update
+        setTimeout(() => {
+          onUpdate?.();
+        }, 2000);
       }
     } catch (error) {
       console.error("Failed to update ticket:", error);
@@ -162,39 +163,46 @@ const UpdateTicketForm = ({ ticket, users, isLRGVDC, session }) => {
           message={toastMessage} 
           type={toastType}
           onClose={() => setShowToast(false)}
-          duration={3000}
+          duration={2000}
         />
       )}
       
       <form onSubmit={handleSubmit} className={formStyles.form}>
         <input type="hidden" name="id" value={ticket._id} />
 
-        <label>Name</label>
-        <input
-          type="text"
-          name="name"
-          value={formState.name}
-          onChange={handleInputChange}
-          placeholder="Enter name"
-          className={formStyles.input}
-        />
+        <div className={styles.fieldGroup}>
+          <div className={styles.formGroup}>
+            <label className={styles.required}>Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formState.name}
+              onChange={handleInputChange}
+              placeholder="Enter name"
+              className={formStyles.input}
+              required
+            />
+          </div>
 
-        <label>Email</label>
-        <div className={styles.inputWrapper}>
-          <input
-            type="email"
-            name="email"
-            value={formState.email}
-            onChange={handleInputChange}
-            placeholder="example@email.com"
-            pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}"
-            className={formStyles.input}
-          />
-          {emailError && <span className={styles.errorMessage}>{emailError}</span>}
+          <div className={styles.formGroup}>
+            <label>Email</label>
+            <div className={styles.inputWrapper}>
+              <input
+                type="email"
+                name="email"
+                value={formState.email}
+                onChange={handleInputChange}
+                placeholder="example@email.com"
+                pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}"
+                className={formStyles.input}
+              />
+              {emailError && <span className={styles.errorMessage}>{emailError}</span>}
+            </div>
+          </div>
         </div>
         
         {/* Phone Number and Extension Group */}
-        <div className={formStyles.inputGroup}>
+        <div className={styles.formGroup}>
           <label htmlFor="phone">Phone Number</label>
           <div className={styles.phoneGroup}>
             <input
@@ -223,49 +231,51 @@ const UpdateTicketForm = ({ ticket, users, isLRGVDC, session }) => {
           </div>
         </div>
 
-        <div className={styles.formGroup}>
-          <label htmlFor="department">Department:</label>
-          <select
-            name="department"
-            value={formState.department}
-            onChange={handleInputChange}
-            required
-          >
-            <option value="" disabled>Select Department</option>
-            <option value="Admin">Admin</option>
-            <option value="Finance">Finance</option>
-            <option value="HR">HR</option>
-            <option value="AAA">AAA</option>
-            <option value="VM">VM</option>
-            <option value="HLS">HLS</option>
-            <option value="RPA">RPA</option>
-            <option value="CED">CED</option>
-            <option value="MPO">MPO</option>
-          </select>
+        <div className={styles.fieldGroup}>
+          <div className={styles.formGroup}>
+            <label htmlFor="department" className={styles.required}>Department</label>
+            <select
+              name="department"
+              value={formState.department}
+              onChange={handleInputChange}
+              required
+            >
+              <option value="" disabled>Select Department</option>
+              <option value="Admin">Admin</option>
+              <option value="Finance">Finance</option>
+              <option value="HR">HR</option>
+              <option value="AAA">AAA</option>
+              <option value="VM">VM</option>
+              <option value="HLS">HLS</option>
+              <option value="RPA">RPA</option>
+              <option value="CED">CED</option>
+              <option value="MPO">MPO</option>
+            </select>
+          </div>
+
+          {!isLRGVDC && (
+            <div className={styles.formGroup}>
+              <label htmlFor="assignedTo" className={styles.required}>Assigned To</label>
+              <select
+                name="assignedTo"
+                value={formState.assignedTo}
+                onChange={handleInputChange}
+                required
+                className={formStyles.select}
+              >
+                <option value="" disabled>Select User</option>
+                {Array.isArray(users) && users.map((user) => (
+                  <option key={user._id} value={user._id}>
+                    {user.username || user.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
 
         {!isLRGVDC && (
           <div className={styles.formGroup}>
-            <label htmlFor="assignedTo">Assigned To:</label>
-            <select
-              name="assignedTo"
-              value={formState.assignedTo}
-              onChange={handleInputChange}
-              required
-              className={formStyles.select}
-            >
-              <option value="" disabled>Select User</option>
-              {Array.isArray(users) && users.map((user) => (
-                <option key={user._id} value={user._id}>
-                  {user.username || user.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-
-        {!isLRGVDC && (
-          <>
             <label>Issue</label>
             <select 
               name="issue" 
@@ -290,30 +300,35 @@ const UpdateTicketForm = ({ ticket, users, isLRGVDC, session }) => {
               <option value="Training">Training</option>
               <option value="Other">Other</option>
             </select>
-          </>
+          </div>
         )}
 
-        <label>Comment</label>
-        <textarea
-          name="comment"
-          value={formState.comment}
-          onChange={handleInputChange}
-          rows={5}
-          className={formStyles.textarea}
-        />
+        <div className={styles.formGroup}>
+          <label>Comment</label>
+          <textarea
+            name="comment"
+            value={formState.comment}
+            onChange={handleInputChange}
+            rows={5}
+            className={formStyles.textarea}
+            placeholder="Add any additional notes or comments..."
+          />
+        </div>
 
-        <label>Status</label>
-        <select 
-          name="status" 
-          value={formState.status}
-          onChange={handleInputChange}
-          className={formStyles.select}
-        >
-          <option value="Open">Open</option>
-          {!isLRGVDC && <option value="In Progress">In Progress</option>}
-          {!isLRGVDC && <option value="On Hold">On Hold</option>}
-          <option value="Closed">Closed</option>
-        </select>
+        <div className={styles.formGroup}>
+          <label>Status</label>
+          <select 
+            name="status" 
+            value={formState.status}
+            onChange={handleInputChange}
+            className={`${formStyles.select} ${styles.statusOption} ${styles[formState.status.toLowerCase().replace(' ', '')]}`}
+          >
+            <option value="Open">Open</option>
+            {!isLRGVDC && <option value="In Progress">In Progress</option>}
+            {!isLRGVDC && <option value="On Hold">On Hold</option>}
+            <option value="Closed">Closed</option>
+          </select>
+        </div>
 
         <div className={styles.submitContainer}>
           <button 
@@ -321,7 +336,8 @@ const UpdateTicketForm = ({ ticket, users, isLRGVDC, session }) => {
             className={`${styles.submitButton} ${formStyles.button}`}
             disabled={isSubmitting}
           >
-            {isSubmitting ? "Updating..." : "Update Ticket"}
+            <FaSave />
+            {isSubmitting ? "Saving..." : "Save Changes"}
           </button>
         </div>
       </form>

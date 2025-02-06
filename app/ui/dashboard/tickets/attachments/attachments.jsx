@@ -19,7 +19,7 @@ const ConfirmDialog = ({ isOpen, onClose, onConfirm, filename }) => {
           <h3>Delete Attachment</h3>
         </div>
         <div className={styles.modalBody}>
-          <p>Are you sure you want to delete "{filename}"?</p>
+          <p>Are you sure you want to delete &quot;{filename}&quot;?</p>
           <p className={styles.modalWarning}>This action cannot be undone.</p>
         </div>
         <div className={styles.modalFooter}>
